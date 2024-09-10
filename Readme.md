@@ -44,16 +44,15 @@ Extract URLs from the search results page using XPath queries.
 
 <!-- Usage -->
 ## Usage
-- Access the application at `http://localhost:8080/fetchNews.
+- Access the application at `http://localhost:8080/search.
 ### Controller:
 - It consists of a class named APIController which basically controls the flow of data.
  @GetMapping 
 
 ### API Reference
-   @GetMapping("/fetchNews")
-    public List<NewsArticlee> fetchNews() {
-        String query = "indian sports news";
-        return newsFetcherService.fetchNewsArticles(query);
+    @GetMapping("/search")
+    public List<Map<String, String>> searchNews(@RequestParam("query") String query) {
+        return newsScraperService.scrapeGoogleNews(query);
     }
 
 
